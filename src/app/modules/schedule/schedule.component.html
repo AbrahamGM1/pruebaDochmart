@@ -1,0 +1,35 @@
+<h1 class="text-3xl text-center">
+    HORARIOS
+</h1>
+<div class="flex">
+    <div class="w-[50vw]">
+        <div  [ngClass]="schedule.isUsed ? 'bg-red-700 hover:bg-red-400':'bg-green-700 hover:bg-green-300'"  class="rounded-sm m-auto w-4/6 text-center py-2 my-1 text-white" *ngFor="let schedule of completeschedule" (click)="selectHour(schedule)">
+            {{schedule.hour}}
+        </div>
+    </div>
+    <div>
+        <div class="w-[50vw] text-center">
+            <h1 class="text-2xl" *ngIf="isDisabled(); else elseTemplate">
+                Seleccione una hora
+            </h1>
+            <ng-template #elseTemplate>
+                <h1 class="text-2xl">
+                    Complete los campos
+                </h1>
+            </ng-template>
+            <div [hidden]="isDisabled()">
+                <form [formGroup]="bookingForm">
+                    <input formControlName="name" class="border-2 border-slate-400 rounded-md py-2 px-1 w-5/6 m-4" type="text" placeholder="Nombre">
+                    <input formControlName="email" class="border-2 border-slate-400 rounded-md py-2 px-1 w-5/6 m-4" type="email" placeholder="Correo electrónico">
+                    <input formControlName="number" class="border-2 border-slate-400 rounded-md py-2 px-1 w-5/6 m-4" type="number" placeholder="Teléfono">   
+                    <button [disabled]="bookingForm.invalid" class="rounded-md m-4 w-3/6 py-2 bg-blue-800 hover:bg-blue-950 text-white" (click)="makeReservation()">Reservar</button>    
+                </form>
+            </div> 
+            
+        </div>
+    </div>
+</div>
+
+
+
+

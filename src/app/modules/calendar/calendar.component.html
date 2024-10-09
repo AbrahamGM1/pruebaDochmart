@@ -1,0 +1,12 @@
+<h1 class="text-3xl text-center">
+    CALENDARIO
+</h1>
+<div class="flex flex-wrap gap-1 max-w-[80vw] max-h-[75vh] my-1 m-auto overflow-y-scroll">
+    
+    <div *ngFor="let day of days" [ngClass]="day.isUsed ? 'bg-red-700 hover:bg-red-400':'bg-green-700 hover:bg-green-300'" class="rounded-sm duration-200 w-20 h-20 grid place-content-center text-center text-white
+    " (click)="goToSchedule(day)" > 
+            {{day.date.getDate()}}
+    </div>
+
+</div>
+
